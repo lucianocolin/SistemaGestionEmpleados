@@ -1,4 +1,5 @@
 ﻿using SistemaGestionEmpleados.BL;
+using SistemaGestionEmpleados.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,33 +24,33 @@ namespace SistemaGestionEmpleados.PL
             cbDepartment.Items.Add("Mecánicos");
         }
 
+        int FakeId = 0;
+
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            int FakeId = 0;
 
             string EmployeeNames = txtNames.Text;
             string EmployeeDept = cbDepartment.Text;
             string EmployeeFirstSurname = txtFirstSurname.Text;
             string EmployeeSecondSurname = txtSecSurname.Text;
             string EmployeeEmail = txtEmail.Text;
-            long EmployeePhone = Int64.Parse(numPhone.Text);
 
             Employee newEmployee = new Employee(EmployeeNames, EmployeeDept, EmployeeFirstSurname,
-                             EmployeeSecondSurname, FakeId, EmployeeEmail, EmployeePhone);
+                             EmployeeSecondSurname, FakeId, EmployeeEmail);
 
 
             if (newEmployee.Names != "" && newEmployee.Department != "" && newEmployee.FirstSurname != "" &&
-                newEmployee.SecondSurname != "" && newEmployee.Email != "" && newEmployee.Phone != 0)
+                newEmployee.SecondSurname != "" && newEmployee.Email != "")
             {
                 int n = dgvEmployeesList.Rows.Add();
                 FakeId++;
 
-                dgvEmployeesList.Rows[n].Cells[0].Value = newEmployee.Names;
-                dgvEmployeesList.Rows[n].Cells[1].Value = newEmployee.Department;
+                dgvEmployeesList.Rows[n].Cells[0].Value = newEmployee.Id;
+                dgvEmployeesList.Rows[n].Cells[1].Value = newEmployee.Names;
                 dgvEmployeesList.Rows[n].Cells[2].Value = newEmployee.FirstSurname;
                 dgvEmployeesList.Rows[n].Cells[3].Value = newEmployee.SecondSurname;
-                dgvEmployeesList.Rows[n].Cells[4].Value = newEmployee.Email;
-                dgvEmployeesList.Rows[n].Cells[5].Value = newEmployee.Phone.ToString();
+                dgvEmployeesList.Rows[n].Cells[4].Value = newEmployee.Department;
+                dgvEmployeesList.Rows[n].Cells[5].Value = newEmployee.Email;
 
                 CleanInputs();
             }
@@ -68,12 +69,17 @@ namespace SistemaGestionEmpleados.PL
             txtFirstSurname.Text = "";
             txtSecSurname.Text = "";
             txtEmail.Text = "";
-            numPhone.Value = 0;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             CleanInputs();
+        }
+
+        private void btnEditEmployee_Click(object sender, EventArgs e)
+        {
+            ConnectionDB db = new ConnectionDB();
+            MessageBox.Show("Conectado..." + db.TryConnection("INSERT INTO Departamentos(Departamentos) VALUES('Mecánicos')"));
         }
     }
 }
