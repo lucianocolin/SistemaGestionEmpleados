@@ -44,11 +44,16 @@
             btnDeleteEmployee = new System.Windows.Forms.Button();
             dgvEmployeesList = new System.Windows.Forms.DataGridView();
             names = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             fSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             sSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             numPhone = new System.Windows.Forms.NumericUpDown();
+            btnExam = new System.Windows.Forms.Button();
+            cbDepartment = new System.Windows.Forms.ComboBox();
+            lblDepartment = new System.Windows.Forms.Label();
+            btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)picEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployeesList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPhone).BeginInit();
@@ -56,9 +61,9 @@
             // 
             // picEmployee
             // 
-            picEmployee.Location = new System.Drawing.Point(12, 12);
+            picEmployee.Location = new System.Drawing.Point(48, 12);
             picEmployee.Name = "picEmployee";
-            picEmployee.Size = new System.Drawing.Size(330, 301);
+            picEmployee.Size = new System.Drawing.Size(263, 231);
             picEmployee.TabIndex = 0;
             picEmployee.TabStop = false;
             // 
@@ -162,7 +167,7 @@
             // 
             btnAddEmployee.Location = new System.Drawing.Point(377, 259);
             btnAddEmployee.Name = "btnAddEmployee";
-            btnAddEmployee.Size = new System.Drawing.Size(181, 54);
+            btnAddEmployee.Size = new System.Drawing.Size(144, 54);
             btnAddEmployee.TabIndex = 12;
             btnAddEmployee.Text = "AGREGAR";
             btnAddEmployee.UseVisualStyleBackColor = true;
@@ -170,18 +175,18 @@
             // 
             // btnEditEmployee
             // 
-            btnEditEmployee.Location = new System.Drawing.Point(616, 259);
+            btnEditEmployee.Location = new System.Drawing.Point(550, 259);
             btnEditEmployee.Name = "btnEditEmployee";
-            btnEditEmployee.Size = new System.Drawing.Size(181, 54);
+            btnEditEmployee.Size = new System.Drawing.Size(144, 54);
             btnEditEmployee.TabIndex = 13;
             btnEditEmployee.Text = "EDITAR";
             btnEditEmployee.UseVisualStyleBackColor = true;
             // 
             // btnDeleteEmployee
             // 
-            btnDeleteEmployee.Location = new System.Drawing.Point(850, 259);
+            btnDeleteEmployee.Location = new System.Drawing.Point(722, 259);
             btnDeleteEmployee.Name = "btnDeleteEmployee";
-            btnDeleteEmployee.Size = new System.Drawing.Size(181, 54);
+            btnDeleteEmployee.Size = new System.Drawing.Size(144, 54);
             btnDeleteEmployee.TabIndex = 14;
             btnDeleteEmployee.Text = "ELIMINAR";
             btnDeleteEmployee.UseVisualStyleBackColor = true;
@@ -189,7 +194,7 @@
             // dgvEmployeesList
             // 
             dgvEmployeesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployeesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { names, fSurname, sSurname, email, phone });
+            dgvEmployeesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { names, dept, fSurname, sSurname, email, phone });
             dgvEmployeesList.Location = new System.Drawing.Point(12, 351);
             dgvEmployeesList.Name = "dgvEmployeesList";
             dgvEmployeesList.RowHeadersWidth = 51;
@@ -204,6 +209,13 @@
             names.MinimumWidth = 6;
             names.Name = "names";
             names.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dept
+            // 
+            dept.HeaderText = "Departamento";
+            dept.MinimumWidth = 6;
+            dept.Name = "dept";
+            dept.Width = 125;
             // 
             // fSurname
             // 
@@ -241,11 +253,54 @@
             numPhone.Size = new System.Drawing.Size(289, 27);
             numPhone.TabIndex = 16;
             // 
+            // btnExam
+            // 
+            btnExam.Location = new System.Drawing.Point(48, 259);
+            btnExam.Name = "btnExam";
+            btnExam.Size = new System.Drawing.Size(263, 54);
+            btnExam.TabIndex = 17;
+            btnExam.Text = "EXAMINAR...";
+            btnExam.UseVisualStyleBackColor = true;
+            // 
+            // cbDepartment
+            // 
+            cbDepartment.FormattingEnabled = true;
+            cbDepartment.Location = new System.Drawing.Point(742, 37);
+            cbDepartment.Name = "cbDepartment";
+            cbDepartment.Size = new System.Drawing.Size(289, 28);
+            cbDepartment.TabIndex = 18;
+            // 
+            // lblDepartment
+            // 
+            lblDepartment.AutoSize = true;
+            lblDepartment.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            lblDepartment.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblDepartment.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            lblDepartment.Location = new System.Drawing.Point(742, 12);
+            lblDepartment.Name = "lblDepartment";
+            lblDepartment.Size = new System.Drawing.Size(145, 22);
+            lblDepartment.TabIndex = 19;
+            lblDepartment.Text = "Departamento";
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new System.Drawing.Point(887, 259);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new System.Drawing.Size(144, 54);
+            btnClear.TabIndex = 20;
+            btnClear.Text = "LIMPIAR";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
             // FrmEmployees
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1057, 578);
+            ClientSize = new System.Drawing.Size(1055, 578);
+            Controls.Add(btnClear);
+            Controls.Add(lblDepartment);
+            Controls.Add(cbDepartment);
+            Controls.Add(btnExam);
             Controls.Add(numPhone);
             Controls.Add(dgvEmployeesList);
             Controls.Add(btnDeleteEmployee);
@@ -263,7 +318,9 @@
             Controls.Add(picEmployee);
             Controls.Add(lblBackground);
             Name = "FrmEmployees";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "FrmEmployees";
+            Load += FrmEmployees_Load;
             ((System.ComponentModel.ISupportInitialize)picEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployeesList).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPhone).EndInit();
@@ -288,11 +345,16 @@
         private System.Windows.Forms.Button btnEditEmployee;
         private System.Windows.Forms.Button btnDeleteEmployee;
         private System.Windows.Forms.DataGridView dgvEmployeesList;
+        private System.Windows.Forms.NumericUpDown numPhone;
+        private System.Windows.Forms.Button btnExam;
+        private System.Windows.Forms.ComboBox cbDepartment;
+        private System.Windows.Forms.Label lblDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn names;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dept;
         private System.Windows.Forms.DataGridViewTextBoxColumn fSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn sSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
-        private System.Windows.Forms.NumericUpDown numPhone;
+        private System.Windows.Forms.Button btnClear;
     }
 }
