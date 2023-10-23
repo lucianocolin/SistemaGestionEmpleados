@@ -38,25 +38,24 @@
             lblFirstSurname = new System.Windows.Forms.Label();
             lblSecSurname = new System.Windows.Forms.Label();
             lblEmail = new System.Windows.Forms.Label();
-            lblPhone = new System.Windows.Forms.Label();
             btnAddEmployee = new System.Windows.Forms.Button();
             btnEditEmployee = new System.Windows.Forms.Button();
             btnDeleteEmployee = new System.Windows.Forms.Button();
             dgvEmployeesList = new System.Windows.Forms.DataGridView();
+            id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             names = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             fSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             sSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            numPhone = new System.Windows.Forms.NumericUpDown();
             btnExam = new System.Windows.Forms.Button();
             cbDepartment = new System.Windows.Forms.ComboBox();
             lblDepartment = new System.Windows.Forms.Label();
             btnClear = new System.Windows.Forms.Button();
+            txtID = new System.Windows.Forms.TextBox();
+            lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)picEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployeesList).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numPhone).BeginInit();
             SuspendLayout();
             // 
             // picEmployee
@@ -77,9 +76,9 @@
             // 
             // txtNames
             // 
-            txtNames.Location = new System.Drawing.Point(377, 37);
+            txtNames.Location = new System.Drawing.Point(646, 39);
             txtNames.Name = "txtNames";
-            txtNames.Size = new System.Drawing.Size(289, 27);
+            txtNames.Size = new System.Drawing.Size(385, 27);
             txtNames.TabIndex = 2;
             // 
             // txtFirstSurname
@@ -91,16 +90,16 @@
             // 
             // txtSecSurname
             // 
-            txtSecSurname.Location = new System.Drawing.Point(742, 113);
+            txtSecSurname.Location = new System.Drawing.Point(722, 113);
             txtSecSurname.Name = "txtSecSurname";
-            txtSecSurname.Size = new System.Drawing.Size(289, 27);
+            txtSecSurname.Size = new System.Drawing.Size(309, 27);
             txtSecSurname.TabIndex = 4;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new System.Drawing.Point(377, 189);
+            txtEmail.Location = new System.Drawing.Point(722, 191);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new System.Drawing.Size(289, 27);
+            txtEmail.Size = new System.Drawing.Size(309, 27);
             txtEmail.TabIndex = 5;
             // 
             // lblNames
@@ -109,7 +108,7 @@
             lblNames.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             lblNames.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblNames.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblNames.Location = new System.Drawing.Point(377, 12);
+            lblNames.Location = new System.Drawing.Point(646, 14);
             lblNames.Name = "lblNames";
             lblNames.Size = new System.Drawing.Size(94, 22);
             lblNames.TabIndex = 7;
@@ -133,7 +132,7 @@
             lblSecSurname.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             lblSecSurname.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblSecSurname.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblSecSurname.Location = new System.Drawing.Point(742, 88);
+            lblSecSurname.Location = new System.Drawing.Point(722, 88);
             lblSecSurname.Name = "lblSecSurname";
             lblSecSurname.Size = new System.Drawing.Size(172, 22);
             lblSecSurname.TabIndex = 9;
@@ -145,23 +144,11 @@
             lblEmail.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             lblEmail.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblEmail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblEmail.Location = new System.Drawing.Point(377, 164);
+            lblEmail.Location = new System.Drawing.Point(722, 166);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new System.Drawing.Size(181, 22);
             lblEmail.TabIndex = 10;
             lblEmail.Text = "Correo Electrónico";
-            // 
-            // lblPhone
-            // 
-            lblPhone.AutoSize = true;
-            lblPhone.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            lblPhone.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lblPhone.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblPhone.Location = new System.Drawing.Point(742, 164);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new System.Drawing.Size(91, 22);
-            lblPhone.TabIndex = 11;
-            lblPhone.Text = "Teléfono";
             // 
             // btnAddEmployee
             // 
@@ -181,6 +168,7 @@
             btnEditEmployee.TabIndex = 13;
             btnEditEmployee.Text = "EDITAR";
             btnEditEmployee.UseVisualStyleBackColor = true;
+            btnEditEmployee.Click += btnEditEmployee_Click;
             // 
             // btnDeleteEmployee
             // 
@@ -194,13 +182,20 @@
             // dgvEmployeesList
             // 
             dgvEmployeesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployeesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { names, dept, fSurname, sSurname, email, phone });
+            dgvEmployeesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { id, names, fSurname, sSurname, dept, email });
             dgvEmployeesList.Location = new System.Drawing.Point(12, 351);
             dgvEmployeesList.Name = "dgvEmployeesList";
             dgvEmployeesList.RowHeadersWidth = 51;
             dgvEmployeesList.RowTemplate.Height = 29;
             dgvEmployeesList.Size = new System.Drawing.Size(1019, 215);
             dgvEmployeesList.TabIndex = 15;
+            // 
+            // id
+            // 
+            id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            id.HeaderText = "ID";
+            id.MinimumWidth = 6;
+            id.Name = "id";
             // 
             // names
             // 
@@ -209,13 +204,6 @@
             names.MinimumWidth = 6;
             names.Name = "names";
             names.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dept
-            // 
-            dept.HeaderText = "Departamento";
-            dept.MinimumWidth = 6;
-            dept.Name = "dept";
-            dept.Width = 125;
             // 
             // fSurname
             // 
@@ -231,27 +219,19 @@
             sSurname.MinimumWidth = 6;
             sSurname.Name = "sSurname";
             // 
+            // dept
+            // 
+            dept.HeaderText = "Departamento";
+            dept.MinimumWidth = 6;
+            dept.Name = "dept";
+            dept.Width = 125;
+            // 
             // email
             // 
             email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             email.HeaderText = "Correo Electrónico";
             email.MinimumWidth = 6;
             email.Name = "email";
-            // 
-            // phone
-            // 
-            phone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            phone.HeaderText = "Teléfono";
-            phone.MinimumWidth = 6;
-            phone.Name = "phone";
-            // 
-            // numPhone
-            // 
-            numPhone.Location = new System.Drawing.Point(742, 190);
-            numPhone.Maximum = new decimal(new int[] { 1874919423, 2328306, 0, 0 });
-            numPhone.Name = "numPhone";
-            numPhone.Size = new System.Drawing.Size(289, 27);
-            numPhone.TabIndex = 16;
             // 
             // btnExam
             // 
@@ -265,7 +245,7 @@
             // cbDepartment
             // 
             cbDepartment.FormattingEnabled = true;
-            cbDepartment.Location = new System.Drawing.Point(742, 37);
+            cbDepartment.Location = new System.Drawing.Point(377, 191);
             cbDepartment.Name = "cbDepartment";
             cbDepartment.Size = new System.Drawing.Size(289, 28);
             cbDepartment.TabIndex = 18;
@@ -276,7 +256,7 @@
             lblDepartment.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             lblDepartment.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lblDepartment.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            lblDepartment.Location = new System.Drawing.Point(742, 12);
+            lblDepartment.Location = new System.Drawing.Point(377, 166);
             lblDepartment.Name = "lblDepartment";
             lblDepartment.Size = new System.Drawing.Size(145, 22);
             lblDepartment.TabIndex = 19;
@@ -292,21 +272,40 @@
             btnClear.UseVisualStyleBackColor = true;
             btnClear.Click += btnClear_Click;
             // 
+            // txtID
+            // 
+            txtID.Location = new System.Drawing.Point(377, 39);
+            txtID.Name = "txtID";
+            txtID.Size = new System.Drawing.Size(209, 27);
+            txtID.TabIndex = 21;
+            // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            lblID.Font = new System.Drawing.Font("Montserrat", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lblID.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            lblID.Location = new System.Drawing.Point(377, 14);
+            lblID.Name = "lblID";
+            lblID.Size = new System.Drawing.Size(30, 22);
+            lblID.TabIndex = 22;
+            lblID.Text = "ID";
+            // 
             // FrmEmployees
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1055, 578);
+            Controls.Add(lblID);
+            Controls.Add(txtID);
             Controls.Add(btnClear);
             Controls.Add(lblDepartment);
             Controls.Add(cbDepartment);
             Controls.Add(btnExam);
-            Controls.Add(numPhone);
             Controls.Add(dgvEmployeesList);
             Controls.Add(btnDeleteEmployee);
             Controls.Add(btnEditEmployee);
             Controls.Add(btnAddEmployee);
-            Controls.Add(lblPhone);
             Controls.Add(lblEmail);
             Controls.Add(lblSecSurname);
             Controls.Add(lblFirstSurname);
@@ -323,7 +322,6 @@
             Load += FrmEmployees_Load;
             ((System.ComponentModel.ISupportInitialize)picEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployeesList).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numPhone).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -340,21 +338,21 @@
         private System.Windows.Forms.Label lblFirstSurname;
         private System.Windows.Forms.Label lblSecSurname;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Button btnAddEmployee;
         private System.Windows.Forms.Button btnEditEmployee;
         private System.Windows.Forms.Button btnDeleteEmployee;
         private System.Windows.Forms.DataGridView dgvEmployeesList;
-        private System.Windows.Forms.NumericUpDown numPhone;
         private System.Windows.Forms.Button btnExam;
         private System.Windows.Forms.ComboBox cbDepartment;
         private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn names;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dept;
         private System.Windows.Forms.DataGridViewTextBoxColumn fSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn sSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dept;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
-        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblID;
     }
 }

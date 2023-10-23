@@ -12,9 +12,8 @@ namespace SistemaGestionEmpleados.BL
         public string SecondSurname { get; set; }
         public int Id { get; set; }
         public string Email { get; set; }
-        public long Phone { get; set; }
 
-        public Employee(string names, string dept, string fSurname, string sSurname, int id, string email, long phone)
+        public Employee(string names, string dept, string fSurname, string sSurname, int id, string email)
         {
             Names = names;
             Department = dept;
@@ -22,7 +21,6 @@ namespace SistemaGestionEmpleados.BL
             SecondSurname = sSurname;
             Id = id;
             Email = email;
-            Phone = phone;
         }
     }
 }
